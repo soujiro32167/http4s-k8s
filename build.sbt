@@ -47,5 +47,6 @@ guardrailTasks in Compile := List(
 //  ScalaServer(file("myserver.yaml"), pkg="com.example.server", tracing=true),
 //  ScalaModels(file("myserver.yaml"), pkg="com.example.models"),
 //  JavaClient(file("github.yaml"), pkg="com.example.clients.github")
-  ScalaModels(file("k8s-openapi.json"), pkg="com.soujiro32167.client", framework = "http4s", imports = List("shims._"), tracing = true)
+//  ScalaModels(file("k8s-openapi.json"), pkg="io.sk8s.models", framework = "http4s", imports = List("shims._")),
+  ScalaClient(file("k8s-openapi.json"), pkg="io.sk8s.client", framework = "http4s", imports = List("shims._"), tracing = true)
 )
