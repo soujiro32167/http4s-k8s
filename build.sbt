@@ -1,19 +1,16 @@
-import Dependencies._
-
-ThisBuild / scalaVersion     := "2.12.8"
+ThisBuild / scalaVersion     := "2.13.1"
 ThisBuild / version          := "0.1.0-SNAPSHOT"
 ThisBuild / organization     := "com.example"
 ThisBuild / organizationName := "example"
 
-val Http4sVersion = "0.20.13"
-val CirceVersion = "0.11.2"
+val Http4sVersion = "0.21.0"
+val CirceVersion = "0.13.0"
 val Specs2Version = "4.1.0"
 val LogbackVersion = "1.2.3"
 
 lazy val root = (project in file("."))
   .settings(
     name := "http4s-k8s",
-    scalacOptions ++= Seq("-Ypartial-unification"),
     libraryDependencies ++= Seq(
 //      "io.circe" %% "circe-core" % circeVersion,
 //      "io.circe" %% "circe-generic" % circeVersion,
@@ -24,10 +21,8 @@ lazy val root = (project in file("."))
       "org.http4s"      %% "http4s-circe"        % Http4sVersion,
       "org.http4s"      %% "http4s-dsl"          % Http4sVersion,
       "io.circe"        %% "circe-generic"       % CirceVersion,
-//      "io.circe"        %% "circe-java8"         % CirceVersion,
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion,
-      "org.specs2"      %% "specs2-core"         % Specs2Version % "test",
-      scalaTest % Test
+      "org.scalatest"   %% "scalatest" %    "3.1.1" %           Test
     )
   )
 
@@ -37,7 +32,6 @@ scalacOptions ++= Seq(
   "-language:higherKinds",
   "-language:postfixOps",
   "-feature",
-  "-Ypartial-unification",
   "-Xfatal-warnings",
 )
 
