@@ -30,6 +30,11 @@ lazy val k8sClient = (project in file("modules") / "k8s-client")
       "org.http4s"      %% "http4s-circe"        % Http4sVersion,
       "org.http4s"      %% "http4s-dsl"          % Http4sVersion,
       "io.circe"        %% "circe-generic"       % CirceVersion,
+      "io.circe"        %% "circe-parser"       % CirceVersion,
+      "io.circe"        %% "circe-core"         % CirceVersion,
+      "ch.qos.logback"  %  "logback-classic"     % "1.2.3",
+      "org.bouncycastle" % "bcpkix-jdk15on" % "1.60",
+      "org.yaml" % "snakeyaml" % "1.21"
     ),
     guardrailTasks in Compile := List(
       //  ScalaClient(file("petstore.yaml")),
