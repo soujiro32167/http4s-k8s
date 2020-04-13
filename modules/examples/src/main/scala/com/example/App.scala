@@ -7,6 +7,7 @@ import org.http4s.client.Client
 import zio._
 import zio.console.{Console, _}
 import zio.interop.catz._
+import io.circe.syntax._
 
 
 
@@ -29,6 +30,6 @@ object App extends zio.App {
     conf <- RIO.access[K8sConfigModule](_.get)
     coreV1Client <- RIO.access[ClientModule](cm => Core_v1Client.httpClient(cm.get, conf.currentContext.cluster.server))
     podList <- coreV1Client.listCoreV1NamespacedPod(nopTrace, "kube-system")
-    _ <- podList.fold(pl => putStrLn(pl.toString), putStrLn("Unauthorized"))
+    _ <- podList.fold(pl => putStrLn(pl.asJson.deepDropNullValues.spaces2), putStrLn("Unauthorized"))
   } yield ()
 }
